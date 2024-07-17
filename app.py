@@ -37,9 +37,9 @@ def slack_command():
 
     username, password, email = text
 
-    if command == '/run-billing':
+    if command == '/billing':
         output = run_script('billing.py', username, password, email)
-    elif command == '/run-badges':
+    elif command == '/badges':
         output = run_script('badges.py', username, password, email)
     else:
         output = 'Unknown command'
@@ -65,7 +65,7 @@ def slack_clearances():
     password = text[1]
     netid_list = text[2:]
 
-    if command == '/run-clearances':
+    if command == '/clearances':
         output = run_script('clearances.py', username, password, netid_list)
     else:
         output = 'Unknown command'
