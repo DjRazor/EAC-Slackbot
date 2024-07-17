@@ -1,0 +1,6 @@
+Flask
+slack_bolt
+selenium
+webdriver_manager
+pandas
+pyautogui
