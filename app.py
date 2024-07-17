@@ -33,7 +33,7 @@ def slack_command():
     text = data.get('text').split()
 
     if len(text) != 3:
-        return jsonify({'text': 'Please provide username, password, and email'}), 400
+        return jsonify({'text': 'Please provide your NetID, Password, and Email'}), 400
 
     username, password, email = text
 
@@ -44,6 +44,32 @@ def slack_command():
     else:
         output = 'Unknown command'
 
+    return jsonify({'text': output})
+
+@app.route('/slack/clearances', methods=['POST'])
+def slack_clearances():
+    data = request.form
+    token = data.get('token')
+
+    # Verify the request is from Slack
+    if token != SLACK_VERIFICATION_TOKEN:
+        return jsonify({'text': 'Invalid token'}), 403
+
+    command = data.get('command')
+    text = data.get('text').split()
+
+    if len(text) < 3:
+        return jsonify({'text': 'Please provide NetID, Password, and at least one NetID to clear.'}), 400
+
+    username = text[0]
+    password = text[1]
+    netid_list = text[2:]
+
+    if command == '/run-clearances':
+        output = run_script('clearances.py', username, password, netid_list)
+    else:
+        output = 'Unknown command'
+    
     return jsonify({'text': output})
 
 @app.route('/slack/interactive', methods=['POST'])
