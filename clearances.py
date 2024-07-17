@@ -1,7 +1,8 @@
 import sys
 
-def main(username, password, netid_list):
-    # Your billing script logic here
+def main(username, password, netid_list_str):
+    netid_list = netid_list_str.split(',')
+
     print(f'Running clearances script with {username}, {password}, {netid_list}')
 
 if __name__ == '__main__':

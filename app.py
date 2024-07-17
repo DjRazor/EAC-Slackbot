@@ -64,9 +64,10 @@ def slack_clearances():
     username = text[0]
     password = text[1]
     netid_list = text[2:]
+    netid_list_str = ','.join(netid_list)
 
     if command == '/clearances':
-        output = run_script('clearances.py', username, password, netid_list)
+        output = run_script('clearances.py', username, password, netid_list_str)
     else:
         output = 'Unknown command'
     

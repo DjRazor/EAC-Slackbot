@@ -1,7 +1,6 @@
 import sys
 
 def main(username, password, email):
-    # Your billing script logic here
     print(f'Running billing script with {username}, {password}, {email}')
 
 if __name__ == '__main__':
