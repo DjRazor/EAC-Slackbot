@@ -29,12 +29,16 @@ def main(username, password, email):
     # Set up starting directory
     current_path = os.getcwd()
     desired_path = f"C:\\Users\\{username}\\OneDrive - Brigham Young University"
-    if current_path != desired_path:
-        # Change the working directory to the desired path
-        os.chdir(desired_path)
-        print(f"Changed working directory to: {desired_path}")
-    else:
-        print("Currently in needed directory")
+    try:
+        if current_path != desired_path:
+            # Change the working directory to the desired path
+            os.chdir(desired_path)
+            print(f"Changed working directory to: {desired_path}")
+        else:
+            print("Currently in needed directory")
+    except:
+        print("Error in manipulating directories...")
+        driver.quit()
 
     # Set up the download directory
     download_dir = os.path.join(os.getcwd(), "downloads")
@@ -47,7 +51,8 @@ def main(username, password, email):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"download.default_directory": download_dir}
     chrome_options.add_experimental_option("prefs", prefs)
-    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--headless")  # Add this line for headless mode
+    chrome_options.add_argument("--disable-gpu")  # Add this line for headless mode
 
     # Set up the WebDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
