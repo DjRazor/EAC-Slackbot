@@ -18,13 +18,13 @@ import pyautogui as pag
 import time
 from datetime import datetime, timedelta
 
-# Email constants (change if needed)
-email_recipient = "crdunc@byu.edu" # CHANGE BACK
-email_subject = "McKay EPP ID Badge Request"
-email_message = "Here is an excel sheet of badges we need. Thank you!"
-
 def main(username, password, email):
     print(f'Running badges script with {username}, {password}, {email}')
+
+    # Email constants (change if needed)
+    email_recipient = "crdunc@byu.edu" # CHANGE BACK
+    email_subject = "McKay EPP ID Badge Request"
+    email_message = "Here is an excel sheet of badges we need. Thank you!"
 
     # Set up starting directory
     current_path = os.getcwd()
@@ -423,4 +423,5 @@ def main(username, password, email):
         driver.quit()
 
 if __name__ == '__main__':
+    print("reached here in badges!")
     main(sys.argv[1], sys.argv[2], sys.argv[3])
