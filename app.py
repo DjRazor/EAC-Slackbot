@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 import subprocess
+import os
 
 app = Flask(__name__)
 
 # Your verification token (found in Slack app settings)
-SLACK_VERIFICATION_TOKEN = 'xoxb-7401649483671-7418796889140-uiJiemJUF7AksSqZccvF7hNS'
+SLACK_VERIFICATION_TOKEN = os.getenv('SLACK_VERIFICATION_TOKEN')
 
 # Function to run a Python script
 def run_script(script_name, username, password, email):

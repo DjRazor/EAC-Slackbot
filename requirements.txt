@@ -1,6 +1,7 @@
 Flask
-slack_bolt
 selenium
 webdriver_manager
 pandas
 pyautogui
+gunicorn==20.1.0
+slack_sdk==3.8.0
