@@ -15,7 +15,7 @@ def main(username, password, email):
     title = driver.title
     driver.quit()
 
-    return f"The title of the page is: {title}"
+    print(f"The title of the page is: {title}")
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2], sys.argv[3])
