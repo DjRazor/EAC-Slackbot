@@ -4,6 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+import time
+
 def main(username, password, email):
     print(f'Running badges script with {username}, {password}, {email}')
     options = Options()
@@ -12,6 +14,7 @@ def main(username, password, email):
 
     # Example of visiting a website
     driver.get("https://mas.byu.edu/#/")
+    time.sleep(5)
     title = driver.title
     driver.quit()
 
